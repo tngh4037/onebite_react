@@ -4,10 +4,12 @@ import Button from '../components/Button';
 import Viewer from '../components/Viewer';
 import useDiary from '../hooks/useDiary';
 import { getStringedDate } from '../util/get-stringed-date';
+import usePageTitle from './../hooks/usePageTitle';
 
 const Diary = () => {
   const params = useParams();
   const nav = useNavigate();
+  usePageTitle(`${params.id}번 일기`);
 
   const curDiaryItem = useDiary(params.id);
   // 최초 랜더링 시점에는 curDiaryItem 가 undefined 가 리턴됨. 이후 마운트된 후 useEffect 가 실행되고, 거기서 setCurDiaryItem 를 통해 state 를 바꾸기에 다시 리랜더링되고, 리랜더링 되는 시점에는 curDiaryItem 에 값이 있는 상태가 됨.

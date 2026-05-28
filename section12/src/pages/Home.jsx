@@ -4,6 +4,7 @@ import DiaryList from './../components/DiaryList';
 
 import { useState, useContext } from 'react';
 import { DiaryStateContext } from '../App';
+import usePageTitle from './../hooks/usePageTitle';
 
 // 월 기준으로 필터링
 const getMonthlyData = (pivotDate, data) => {
@@ -31,6 +32,7 @@ const getMonthlyData = (pivotDate, data) => {
 };
 
 const Home = () => {
+  usePageTitle('감정 일기장');
   const [pivotDate, setPivotDate] = useState(new Date());
   const onIncreaseMonth = () => {
     setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1));
